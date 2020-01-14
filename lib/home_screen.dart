@@ -12,6 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   File _image;
   String message = '';
+
+  //replace the url by your url
+  String url =
+      'http://192.168.1.32/chatApp/public/api/upload'; // your rest api url 'http://your_ip_adress/project_path'
   bool loading = false;
   pickImage() async {
     File image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -28,12 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
     Map<String, String> headers = {
       "Accept": "application/json",
     };
-    var uri = Uri.parse("http://192.168.1.32/chatApp/public/api/upload");
+    var uri = Uri.parse(url);
     var length = await file.length();
     print(length);
     http.MultipartRequest request = new http.MultipartRequest('POST', uri)
       ..headers.addAll(headers)
       ..files.add(
+        // replace file with your field name exampe: image
         http.MultipartFile('file', file.openRead(), length,
             filename: 'test.png'),
       );
