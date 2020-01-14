@@ -1,6 +1,6 @@
-# upload_image
+# upload image
 
-A new Flutter project.
+<img src="/assets/intro.png"></br>
 
 ## Getting Started
 
